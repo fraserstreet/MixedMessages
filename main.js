@@ -33,4 +33,5 @@ messageRep.loadMessage(4, 'should be an error');
 messageRep.printMessagesByPosition(0);
 messageRep.printMessagesByPosition(1);
 messageRep.printMessagesByPosition(2);
+console.table(messageRep);
 // messageRep.printMessagesByPosition(4);

@@ -5,10 +5,17 @@ class MessageText {
         this.messageArray = [[], [], []];
     }
     loadMessage(position, message) {
-        this.messageArray[position].push(message);
+        try {
+            if ((position < 0) || (position > 2)) {
+                throw "position must be 0-2";
+            }
+            this.messageArray[position].push(message);
+        } catch (err) {
+            console.log(`Range error position=${position}`);
+        }
     }
     printMessagesByPosition(position) {
-        this.messageArray[position].forEach(function(str, index) {console.log(index, str);});
+        this.messageArray[position].forEach(function (str, index) { console.log(index, str); });
     }
 }
 
@@ -22,6 +29,8 @@ messageRep.loadMessage(1, 'for all good men');
 messageRep.loadMessage(1, 'jumped over the');
 messageRep.loadMessage(2, 'to come to the aid of their country');
 messageRep.loadMessage(2, 'lazy goat');
+messageRep.loadMessage(4, 'should be an error');
 messageRep.printMessagesByPosition(0);
 messageRep.printMessagesByPosition(1);
 messageRep.printMessagesByPosition(2);
+// messageRep.printMessagesByPosition(4);
